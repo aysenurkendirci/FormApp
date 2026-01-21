@@ -10,11 +10,10 @@ public class HomeController : Controller
 {
     public IActionResult Index()
     {
-        // Şimdilik boş liste gönderiyoruz
-        List<Product> products = new();
+        // ÖNEMLİ: 'new()' yerine 'Repository.Products' kullanıyoruz
+        var products = Repository.Products; 
         return View(products);
     }
-
     public IActionResult Privacy()
     {
         return View();
