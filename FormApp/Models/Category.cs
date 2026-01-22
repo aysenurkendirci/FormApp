@@ -1,4 +1,5 @@
-namespace FormApp.Models
+namespace FormsApp.Models
+
 {
     public class Category
     {

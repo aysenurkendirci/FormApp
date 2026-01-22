@@ -1,0 +1,41 @@
+@model FormsApp.Models.Product
+@using FormsApp.Models 
+
+@{
+    ViewData["Title"] = "Ürün Düzenle";
+    var clist = (List<Category>)ViewBag.Categories ?? new List<Category>();
+}
+
+<h2>Ürün Düzenle</h2>
+
+<form asp-controller="Home" asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="ProductId" />
+    <input type="hidden" asp-for="Image" />
+    
+    <div class="mb-3">
+        <label asp-for="CategoryId" class="form-label">Kategori</label>
+        <select asp-for="CategoryId" class="form-select">
+            @foreach (var item in clist)
+            {
+                <option value="@item.CategoryId">@item.Name</option> 
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input asp-for="Price" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <img src="~/img/@Model.Image" style="width: 100px" class="mb-2 d-block" />
+        <input type="file" name="imageFile" class="form-control" />
+    </div>
+    <div class="mb-3 form-check">
+        <input asp-for="IsActive" class="form-check-input" />
+        <label asp-for="IsActive" class="form-check-label">Aktif</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>

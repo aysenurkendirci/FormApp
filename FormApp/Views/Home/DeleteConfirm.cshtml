@@ -1,0 +1,10 @@
+@model FormsApp.Models.Product
+
+<div class="alert alert-danger">
+    <p><b>@Model.Name</b> isimli ürünü silmek istediğinize emin misiniz?</p>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" name="ProductId" value="@Model.ProductId" />
+        <button type="submit" class="btn btn-danger">Evet, Sil</button>
+        <a asp-action="Index" class="btn btn-secondary">Hayır, Vazgeç</a>
+    </form>
+</div>
